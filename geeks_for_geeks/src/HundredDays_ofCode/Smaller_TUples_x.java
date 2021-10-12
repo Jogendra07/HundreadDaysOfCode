@@ -4,25 +4,34 @@ class Tuples
 {
 	long CountTuples(long arr[],int n,int sum)
 	{
-		long cnt=0;
-		Arrays.sort(arr);
-		for(int i=0;i<n;i++)
-		{
-			for(int j=1;j<n;j++)
-			{
-				if(j==n-1)
-				{
-					break;
-				}
-				if(arr[i]+arr[j]+arr[j+1]<sum)
-				{
-					cnt++;
-				}
-			}
-		}
-	
-		
-		return cnt;
+		 Arrays.sort(arr);
+	      
+	        
+	        long ans = 0;
+	      
+	      
+	        for (int i = 0; i < n - 2; i++)
+	        {
+	           
+	            int j = i + 1, k = n - 1;
+	      
+	            
+	            while (j < k)
+	            {
+	               
+	                if (arr[i] + arr[j] + arr[k] >= sum)
+	                    k--;
+	      
+	               
+	                else
+	                {
+	                    
+	                    ans += (k - j);
+	                    j++;
+	                }
+	            }
+	        }
+	        return ans;
 	}
 }
 public class Smaller_TUples_x {
